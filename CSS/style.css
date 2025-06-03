@@ -87,27 +87,32 @@ body {
 
 .footer-container {
     display: flex;
-    justify-content: space-between;
-    /* Distribui as colunas com espaçamento uniforme */
-    flex-wrap: wrap;
-    /* Permite quebrar linha em telas pequenas */
-    gap: 20px;
+  justify-content: space-between; /* distribui as seções igualmente */
+  flex-wrap: wrap;                /* permite quebra em telas pequenas */
+  gap: 40px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px; /* evita que os itens fiquem muito estreitos */
 }
 
 .footer-section h3,
 .footer-section h4 {
     margin-bottom: 10px;
-
+    text-align: center;
 
 }
 
 .footer-section p,
 .footer-section ul {
     font-size: 0.95rem;
+    color: #ddd;
 }
 
 .footer-section ul {
     list-style: none;
+    padding: 0;
 }
 
 .footer-section ul li {

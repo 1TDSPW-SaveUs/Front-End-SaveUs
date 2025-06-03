@@ -87,14 +87,17 @@ body {
 
 .footer-container {
     display: flex;
-  justify-content: space-between; /* distribui as seções igualmente */
-  flex-wrap: wrap;                /* permite quebra em telas pequenas */
-  gap: 40px;
+    justify-content: space-between;
+    /* distribui as seções igualmente */
+    flex-wrap: wrap;
+    /* permite quebra em telas pequenas */
+    gap: 40px;
 }
 
 .footer-section {
-  flex: 1;
-  min-width: 250px; /* evita que os itens fiquem muito estreitos */
+    flex: 1;
+    min-width: 250px;
+    /* evita que os itens fiquem muito estreitos */
 }
 
 .footer-section h3,
@@ -136,13 +139,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    align-items: left;
     gap: 40px;
     flex-wrap: wrap;
 }
 
 .description {
     flex: 1;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #444;
     max-width: 500px;
 }
@@ -152,6 +156,9 @@ body {
     position: relative;
     width: 300px;
     height: 220px;
+    display: flex;
+    justify-content: flex-end;
+    /* leva as imagens para a extrema direita do container */
 }
 
 .map-image {
@@ -161,16 +168,11 @@ body {
     object-fit: cover;
     position: absolute;
     border: 2px solid #ccc;
+    position: absolute;
 }
 
 .img1 {
     top: 0;
     left: 0;
-    z-index: 2;
-}
-
-.img2 {
-    top: 20px;
-    left: 40px;
-    z-index: 1;
+    z-index: ;
 }

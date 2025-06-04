@@ -1,6 +1,3 @@
-// Front-End-SaveUs/js/validadores.js
-
-// --- Funções Auxiliares (showError, clearError) ---
 export function showError(input, message) {
     const inputGrupo = input.parentElement;
     inputGrupo.classList.add('error');
@@ -22,9 +19,7 @@ export function clearError(input) {
     }
 }
 
-// --- Funções de Validação de Campos Individuais ---
 
-// Validações para Cadastro
 export function validateNome(nomeInput) {
     const nome = nomeInput.value.trim();
     if (nome === '') {
@@ -88,7 +83,6 @@ export function validateTelefone(telefoneInput) {
     }
 }
 
-// Função de validação de e-mail genérica (para cadastro civil, por exemplo)
 export function validateEmail(emailInput) {
     const email = emailInput.value.trim();
     if (email === '') {
@@ -133,7 +127,6 @@ export function validateEndereco(ruaInput, numeroInput, bairroInput, cepInput) {
     return isValid;
 }
 
-// --- Nova Função de Validação para E-mail de Funcionário ---
 export function validateEmailFuncionario(emailInput) {
     const email = emailInput.value.trim();
     const regex = /^[a-zA-Z]+\.[a-zA-Z]+@saveus\.com\.br$/;
@@ -150,14 +143,12 @@ export function validateEmailFuncionario(emailInput) {
     }
 }
 
-
-// Validações para Login
 export function validateSenha(senhaInput) {
     const senha = senhaInput.value.trim();
     if (senha === '') {
         showError(senhaInput, 'A senha é obrigatória.');
         return false;
-    } else if (senha.length < 6) { // Você pode ajustar o mínimo da senha aqui se desejar
+    } else if (senha.length < 6) {
         showError(senhaInput, 'A senha deve ter no mínimo 6 caracteres.');
         return false;
     } else {
@@ -166,36 +157,31 @@ export function validateSenha(senhaInput) {
     }
 }
 
-// --- Lógica Principal: Aplica validação dependendo da página ---
+
 document.addEventListener('DOMContentLoaded', () => {
-    // === Lógica para o formulário de CADASTRO (Civil) ===
-    // Seleciona o formulário de cadastro pelo ID 'cadastro-form'
-    const cadastroForm = document.getElementById('cadastro-form'); // AGORA USANDO getElementById
+    const cadastroForm = document.getElementById('cadastro-form'); 
 
     if (cadastroForm) {
         const nomeInput = document.getElementById('nome');
         const dataNascimentoInput = document.getElementById('data-nascimento');
         const cpfInput = document.getElementById('cpf');
         const telefoneInput = document.getElementById('telefone');
-        const emailContatoInput = document.getElementById('email-contato'); // email-contato no cadastro
+        const emailContatoInput = document.getElementById('email-contato'); 
         const ruaInput = document.getElementById('rua');
         const numeroInput = document.getElementById('numero');
         const bairroInput = document.getElementById('bairro');
         const cepInput = document.getElementById('cep');
 
-        // Adiciona listeners para validação em tempo real (on blur)
         nomeInput.addEventListener('blur', () => validateNome(nomeInput));
         dataNascimentoInput.addEventListener('blur', () => validateDataNascimento(dataNascimentoInput));
         cpfInput.addEventListener('blur', () => validateCpf(cpfInput));
         telefoneInput.addEventListener('blur', () => validateTelefone(telefoneInput));
-        emailContatoInput.addEventListener('blur', () => validateEmail(emailContatoInput)); // Usa validateEmail genérica
+        emailContatoInput.addEventListener('blur', () => validateEmail(emailContatoInput)); 
 
-        // Para campos de endereço, valida o grupo todo em qualquer blur deles
         [ruaInput, numeroInput, bairroInput, cepInput].forEach(input => {
             input.addEventListener('blur', () => validateEndereco(ruaInput, numeroInput, bairroInput, cepInput));
         });
 
-        // Listener para o envio do formulário de CADASTRO
         cadastroForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -214,41 +200,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === Lógica para o formulário de LOGIN (Funcionário) ===
-    // Seleciona o formulário de login pelo ID 'login-form'
-    const loginForm = document.getElementById('login-form'); // AGORA USANDO getElementById
+    const loginForm = document.getElementById('login-form'); 
 
     if (loginForm) {
         const emailInputLogin = document.getElementById('email');
         const senhaInputLogin = document.getElementById('senha');
 
-        // Credenciais fixas para teste
         const CORRECT_EMAIL = 'nome.sobrenome@saveus.com.br';
         const CORRECT_PASSWORD = 'SaveUs@2025';
 
-        // Adiciona listeners para validação em tempo real (on blur)
         emailInputLogin.addEventListener('blur', () => validateEmailFuncionario(emailInputLogin));
         senhaInputLogin.addEventListener('blur', () => validateSenha(senhaInputLogin));
 
-        // Listener para o envio do formulário de LOGIN
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Primeiro, validações básicas de formato
             const isEmailFormatValid = validateEmailFuncionario(emailInputLogin);
             const isSenhaFormatValid = validateSenha(senhaInputLogin);
 
-            // Se o formato estiver OK, verifica as credenciais fixas
             if (isEmailFormatValid && isSenhaFormatValid) {
                 const enteredEmail = emailInputLogin.value.trim();
                 const enteredSenha = senhaInputLogin.value.trim();
 
                 if (enteredEmail === CORRECT_EMAIL && enteredSenha === CORRECT_PASSWORD) {
                     alert('Login efetuado com sucesso!');
-                    window.location.href = 'paginafuncionario.html'; // Redireciona para a página do funcionário
-                } else {
-                    alert('Login incorreto.'); // Mensagem de erro para credenciais incorretas
-                    senhaInputLogin.value = ''; // Limpa a senha para nova tentativa
+                    window.location.href = 'paginafuncionario.html';
+                    alert('Login incorreto.'); 
+                    senhaInputLogin.value = ''; 
                 }
             } else {
                 alert('Por favor, corrija os erros no formulário de login antes de tentar entrar.');

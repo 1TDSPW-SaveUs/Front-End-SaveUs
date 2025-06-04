@@ -2,33 +2,38 @@
     --cor-fundo: linear-gradient(#fafafa, #d6fff4);
     --branco-cinzento: #fafafa;
     --azul-escuro: #007bff;
-    --vermelho-destaque: #dc3545;
     --marrom-escuro: #5c4e44;
     --preto: #111111;
     --branco: #ffffff;
+    --vermelho-destaque: #dc3545;
     --sombra-cabecalho: rgba(0, 0, 0, 0.096);
-    --cor-botoes-hover: white;
-    --cor-rodape-links: #ececec;
-    --cor-fundo-integrante-card: linear-gradient(transparent, #defff193);
     --sombra-integrante-card: rgba(0, 0, 0, 0.1);
     --cor-borda-foto: #ccc;
+    --cor-borda-input: #cecece;
+    --sombra-form: #0000001a;
+    --cor-borda-faq-item: #e0e0e0;
+    --cor-sombra-faq-item: rgba(0, 0, 0, 0.08);
+    --cor-botoes-hover: white;
+    --cor-rodape-links: #ececec;
     --cor-titulo-integrante: var(--azul-escuro);
     --cor-link-social: #007bff;
     --cor-link-social-hover: #0056b3;
-
-    --cor-fundo-form: linear-gradient(transparent, #c3fffc80);
     --cor-texto-principal: #333;
-    --cor-borda-input: #cecece;
-    --cor-foco-input: #007bff;
-    --sombra-form: #0000001a;
     --cor-link-cadastro: #555;
     --cor-link-cadastro-hover: var(--azul-escuro);
     --cor-copyright: #ffffff;
+    --cor-fundo-integrante-card: linear-gradient(transparent, #defff193);
+    --cor-fundo-form: linear-gradient(transparent, #c3fffc80);
     --gradiente-branco-opaco: #ffffff;
     --gradiente-branco-transparente: #ffffff83;
-
-    --cor-borda-faq-item: #e0e0e0;
-    --cor-sombra-faq-item: rgba(0, 0, 0, 0.08);
+    --cor-fundo-faq-inicio: #e0f7fa;
+    --cor-foco-input: #007bff;
+    --cor-mapa-fundo: #f5f5f5;
+    --cor-mapa-titulo: #333;
+    --cor-mapa-botao-principal: #22BED6;
+    --cor-mapa-botao-hover: #1aa4ba;
+    --cor-lateral-filtros: #E6E6E6;
+    --cor-botao-todas: #ADD8E6;
 }
 
 * {
@@ -45,7 +50,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: var(--cor-fundo);
 }
 
 main {
@@ -194,7 +198,6 @@ main {
 
 .coluna ul li a {
     color: var(--cor-rodape-links);
-    text-decoration: none;
 }
 
 .coluna ul li a:hover {
@@ -303,7 +306,6 @@ main {
 
 .integrante-links a {
     color: var(--cor-link-social);
-    text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
@@ -313,11 +315,197 @@ main {
     text-decoration: underline;
 }
 
-html {
-    scroll-behavior: smooth;
+body.pagina-mapa {
+    background: var(--cor-mapa-fundo);
+    padding: 0;
+}
+
+.body.pagina-mapa .hero {
+    padding: 0;
+    margin: 0;
+}
+
+.hero-painel-funcionario {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 0;
+    background: var(--cor-fundo);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.filtros-lateral {
+    background-color: var(--cor-fundo);
+    width: 350px;
+    padding: 20px 15px;
+    box-shadow: 0 2px 10px var(--sombra-cabecalho);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.riscos-titulo {
+    font-size: 1.5rem;
+    color: var(--preto);
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.separador-filtros {
+    width: 80%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 15px 0;
+}
+
+#mapa {
+    height: auto;
+    flex-grow: 1;
+    width: calc(100% - 350px);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.filtros {
+    display: none;
+}
+
+.btn-mapa {
+    margin: 0 8px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--cor-mapa-botao-principal);
+    color: var(--branco);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-mapa:hover {
+    background-color: var(--cor-mapa-botao-hover);
+    transform: translateY(-2px);
+}
+
+.btn-mapa-lateral {
+    width: calc(100% - 30px);
+    margin: 8px 0;
+    padding: 15px 10px;
+    font-size: 1.1rem;
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-mapa-lateral:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-mapa-alta {
+    background-color: #dc3545;
+    border: 2px solid transparent;
+    color: var(--branco);
+}
+
+.btn-mapa-alta:hover {
+    background-color: transparent;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    transition: 0.2s ease-out;
+}
+
+.btn-mapa-media {
+    background-color: #ffc107;
+    border: 2px solid transparent;
+    color: var(--branco);
+}
+
+.btn-mapa-media:hover {
+    background-color: transparent;
+    border: 2px solid #ffc107;
+    color: #ffc107;
+    transition: 0.2s ease-out;
+}
+
+.btn-mapa-baixa {
+    background-color: #28a745;
+    border: 2px solid transparent;
+    color: var(--branco);
+}
+
+.btn-mapa-baixa:hover {
+    background-color: transparent;
+    border: 2px solid #28a745;
+    color: #28a745;
+    transition: 0.2s ease-out;
+}
+
+.btn-mapa-todas {
+    background-color: var(--azul-escuro);
+    border: 2px solid transparent;
+    color: var(--branco);
+}
+
+.btn-mapa-todas:hover {
+    background-color: transparent;
+    border: 2px solid var(--azul-escuro);
+    color: var(--azul-escuro);
+    transition: 0.2s ease-out;
 }
 
 @media (max-width: 768px) {
+    .hero-painel-funcionario {
+        flex-direction: column;
+    }
+
+    .filtros-lateral {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .riscos-titulo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .separador-filtros {
+        display: none;
+    }
+
+    .btn-mapa-lateral {
+        width: auto;
+        flex-grow: 1;
+        margin: 5px;
+    }
+
+    #mapa {
+        height: 400px;
+        width: 100%;
+    }
+
+    .filtros {
+        display: none;
+    }
+
     .integrante-card {
         flex-direction: column;
         text-align: center;
@@ -329,5 +517,15 @@ html {
 
     .integrante-links {
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-painel-funcionario {
+        padding: 0;
+    }
+
+    .btn-mapa-lateral {
+        max-width: 100%;
     }
 }

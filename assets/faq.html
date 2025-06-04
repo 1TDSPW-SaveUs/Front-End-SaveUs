@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SaveUs - Sobre o Projeto</title>
+    <title>FAQ - SaveUs</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/faq.css">
+    <script src="../js/script.js" defer></script>
+    <script src="../js/faq.js" defer></script>
 </head>
 
 <body>
@@ -19,36 +22,104 @@
         </div>
     </header>
 
-    <main class="hero">
+    <main>
+        <section class="faq-inicio">
+            <h1>Dúvidas Frequentes</h1>
+            <p>Encontre respostas para as perguntas mais comuns sobre o SaveUs</p>
+            <div class="faq-search-container">
+                <input type="text" id="faq-search" placeholder="Buscar perguntas...">
+            </div>
+        </section>
 
+        <section class="faq-container">
+            <h2 class="faq-categoria-titulo">Geral</h2>
+            <div class="duvida">
+                <div class="pergunta">O que é o SaveUs? <span class="toggle-icon">+</span></div>
+                <div class="resposta-da-duvida">
+                    O SaveUs é uma plataforma de apoio em situações de desastre, como enchentes, que mapeia pessoas em
+                    risco e facilita o resgate por autoridades.
+                </div>
+            </div>
+
+            <div class="duvida">
+                <div class="pergunta">Quem pode usar o SaveUs? <span class="toggle-icon">+</span></div>
+                <div class="resposta-da-duvida">
+                    Qualquer cidadão pode se cadastrar no SaveUs, principalmente pessoas em grupos de risco como idosos,
+                    crianças e pessoas com deficiência.
+                </div>
+            </div>
+
+            <h2 class="faq-categoria-titulo">Cadastro e Dados</h2>
+            <div class="duvida">
+                <div class="pergunta">Como faço meu cadastro na plataforma? <span class="toggle-icon">+</span></div>
+                <div class="resposta-da-duvida">
+                    Basta acessar a opção "<a href="./cadastro.html">Cadastrar</a>" na página inicial, preencher seus dados pessoais e informar se
+                    pertence a algum grupo de risco.
+                </div>
+            </div>
+
+            <div class="duvida">
+                <div class="pergunta">Meus dados são compartilhados com terceiros? <span class="toggle-icon">+</span></div>
+                <div class="resposta-da-duvida">
+                    Não. Os dados são utilizados apenas por órgãos responsáveis durante emergências, com total respeito
+                    à privacidade do usuário.
+                </div>
+            </div>
+
+            <h2 class="faq-categoria-titulo">Funcionalidades</h2>
+            <div class="duvida">
+                <div class="pergunta">Como o sistema calcula a prioridade de uma pessoa? <span class="toggle-icon">+</span></div>
+                <div class="resposta-da-duvida">
+                    A prioridade é baseada em critérios como idade, deficiência, e mobilidade reduzida, atribuindo uma
+                    pontuação que ajuda no resgate.
+                </div>
+            </div>
+
+            <div class="duvida">
+                <div class="pergunta">O SaveUs funciona offline? <span class="toggle-icon">+</span></div>
+                <div class="resposta-da-duvida">
+                    Não. É necessário estar conectado à internet para acessar as funcionalidades da plataforma e enviar
+                    relatos em tempo real.
+                </div>
+            </div>
+
+            <div class="duvida">
+                <div class="pergunta">Como posso visualizar as áreas de risco no mapa? <span class="toggle-icon">+</span></div>
+                <div class="resposta-da-duvida">
+                    Esta funcionalidade está disponível apenas para funcionários da Defesa Civil.
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-contato-cta">
+            <h2>Ainda tem dúvidas?</h2>
+            <p>Se você não encontrou a resposta que procurava, sinta-se à vontade para nos contatar.</p>
+            <a href="./contato.html" class="btn-azul-grande">Fale Conosco</a>
+        </section>
     </main>
 
     <footer class="rodape">
-        <div class="coluna descricao">
-            <h3>Descrição</h3>
-            <p>Plataforma de apoio em desastres. Unindo tecnologia e solidariedade para salvar vidas.</p>
-            <p>Desenvolvido como projeto acadêmico na FIAP</p>
+        <div class="coluna">
+            <h3>Sobre o SaveUs</h3>
+            <p>Conectando pessoas e proteção em momentos críticos. Juntos, salvamos mais vidas.</p>
         </div>
-        <div class="coluna links">
+        <div class="coluna">
             <h3>Links Rápidos</h3>
             <ul>
-                <li><a href="#">Sobre o Projeto</a></li>
+                <li><a href="./faq.html">Sobre o Projeto</a></li>
                 <li><a href="#">Contato</a></li>
                 <li><a href="./integrantes.html">Integrantes</a></li>
                 <li><a href="#topo">Voltar ao Topo</a></li>
             </ul>
         </div>
-        <div class="coluna contatos">
-            <h3>Contatos</h3>
-            <ul>
-                <li>email: emailexemplo@gmail.com</li>
-                <li>tel: 11 9 6969-6969</li>
-                <li>end: Rua Endereço Teste</li>
-            </ul>
+        <div class="coluna">
+            <h3>Contato</h3>
+            <p>Email: contato@saveus.org</p>
+            <p>Telefone: (11) 99999-9999</p>
+            <p>Endereço: Rua Solidária, 100 - São Paulo/SP</p>
         </div>
-
         <div class="copyright">
-            © SaveUs FIAP - 2025
+            <p>&copy; SaveUs FIAP - 2025</p>
         </div>
     </footer>
 </body>

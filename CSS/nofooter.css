@@ -1,15 +1,4 @@
-:root {
-    --cor-fundo-form: linear-gradient(transparent, #c3fffc80);
-    --cor-texto-principal: #333;
-    --cor-borda-input: #cecece;
-    --cor-foco-input: #007bff;
-    --sombra-form: #0000001a;
-    --cor-link-cadastro: #555;
-    --cor-link-cadastro-hover: var(--azul-escuro);
-    --cor-copyright: #ffffff;
-    --gradiente-branco-opaco: #ffffff;
-    --gradiente-branco-transparente: #ffffff83;
-}
+@import url('style.css');
 
 .hero {
     justify-content: flex-start;

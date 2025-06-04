@@ -1,0 +1,131 @@
+:root {
+    --cor-fundo-form: linear-gradient(transparent, #bffffc);
+    --cor-texto-principal: #333;
+    --cor-borda-input: #cecece;
+    --cor-foco-input: #007bff;
+    --sombra-form: #0000001a;
+    --cor-link-cadastro: #555;
+    --cor-link-cadastro-hover: var(--azul-escuro);
+    --cor-copyright: #ffffff;
+    --gradiente-branco-opaco: #ffffff;
+    --gradiente-branco-transparente: #ffffff83;
+}
+
+.hero {
+    justify-content: flex-start;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 2rem;
+    padding-left: 10%;
+    background-image: linear-gradient(to right, var(--gradiente-branco-opaco) 0%, var(--gradiente-branco-transparente) 30%), url('../assets/img/fundo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.form-card {
+    background-image: var(--cor-fundo-form);
+    padding: 2.5rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--sombra-form);
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.form-card h2 {
+    font-size: 2rem;
+    color: var(--azul-escuro);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.input-grupo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-grupo label {
+    font-weight: bold;
+    color: var(--cor-texto-principal);
+}
+
+.input-grupo input {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.input-grupo input:focus {
+    outline: none;
+    border-color: var(--cor-foco-input);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.lembrar-senha {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: -0.5rem;
+}
+
+.lembrar-senha input[type="checkbox"] {
+    width: auto;
+}
+
+.link-cadastro {
+    font-size: 0.95rem;
+    color: var(--cor-link-cadastro);
+    margin-top: 1rem;
+}
+
+.link-cadastro a {
+    color: var(--cor-link-cadastro-hover);
+    font-weight: bold;
+}
+
+.link-cadastro a:hover {
+    text-decoration: underline;
+}
+
+.form-card .btn-azul-grande {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+.rodape.rodape-reduzido {
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 25px;
+}
+
+.rodape.rodape-reduzido .coluna {
+    display: none;
+}
+
+.rodape.rodape-reduzido .copyright {
+    width: auto;
+    border-top: none;
+    padding: 0;
+    color: var(--cor-copyright);
+}

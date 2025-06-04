@@ -1,9 +1,10 @@
 :root {
-  --cor-fundo: linear-gradient(#F0F0F0, #E9FFF9);
-  --branco-cinzento: #F0F0F0;
+  --cor-fundo: linear-gradient(#fafafa, #d6fff4);
+  --branco-cinzento: #fafafa;
   --azul-escuro: #007bff;
-  --marrom-escuro: #5D4C3F;
-  --marrom-claro: #77625C;
+  --marrom-escuro: #5c4e44;
+  --preto: #111111;
+  --branco: #ffffff;
 }
  
 * {
@@ -16,7 +17,7 @@
  
 body {
   background-color: var(--branco-cinzento);
-  color: #111;
+  color: var(--preto);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -65,7 +66,7 @@ main {
  
 .btn-transparente:hover {
   background-color: var(--azul-escuro);
-  color: white;
+  color: var(--branco);
 }
  
 .btn-azul {
@@ -75,7 +76,7 @@ main {
   font-weight: bold;
   cursor: pointer;
   background-color: var(--azul-escuro);
-  color: white;
+  color: var(--branco);
   border: 2px solid transparent;
   transition: all 0.3s ease;
 }
@@ -90,52 +91,55 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 2rem;
+  padding: 3rem 5rem;
   background: var(--cor-fundo);
   min-height: 500px;
 }
  
 .hero-texto {
-  width: 50%;
-  padding-right: 2rem;
+  width: 55%;
+  padding-right: 5rem;
 }
  
 .hero-texto h1 {
-  font-size: 2rem;
+  font-size: 2.5rem; 
   color: var(--azul-escuro);
   margin-bottom: 1rem;
 }
  
 .hero-texto p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 1.5rem;
   max-width: 90%;
 }
  
 .btn-azul-grande {
   background-color: var(--azul-escuro);
-  color: white;
-  border: none;
+  color: var(--branco);
+  border: 2px solid transparent;
   padding: 1rem 2rem;         
   font-size: 1.25rem;     
   border-radius: 8px; 
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-azul-grande:hover {
+  background-color: transparent;
+  border: 2px solid var(--azul-escuro);
+  color: var(--azul-escuro);
+  transition: 0.3s;
 }
  
 .hero-mapa {
-  width: 50%;
+  width: 45%; 
   text-align: center;
 }
  
 .hero-mapa img {
   max-width: 100%;
 }
-<<<<<<< HEAD
 
-/* === Rodapé === */
-=======
- 
->>>>>>> 103a807bb886a88be7fb1fca89b1e80567499a64
 .rodape {
   background-color: var(--marrom-escuro);
   color: var(--branco-cinzento);
@@ -164,7 +168,7 @@ main {
 }
  
 .coluna ul li a {
-  color: #eee;
+  color: var(--branco);
   text-decoration: none;
 }
  

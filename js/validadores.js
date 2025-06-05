@@ -1,13 +1,13 @@
 export function showError(input, message) {
     const inputGrupo = input.parentElement;
     inputGrupo.classList.add('error');
-    const errorText = inputGrupo.querySelector('.error-text');
-    if (!errorText) {
-        const newErrorText = document.createElement('small');
-        newErrorText.className = 'error-text';
-        inputGrupo.appendChild(newErrorText);
+    let errorTextElement = inputGrupo.querySelector('.error-text');
+    if (!errorTextElement) {
+        errorTextElement = document.createElement('small');
+        errorTextElement.className = 'error-text';
+        inputGrupo.appendChild(errorTextElement);
     }
-    inputGrupo.querySelector('.error-text').innerText = message;
+    errorTextElement.innerText = message;
 }
 
 export function clearError(input) {
@@ -19,6 +19,48 @@ export function clearError(input) {
     }
 }
 
+// Nova função para exibir mensagens personalizadas
+function displayMessage(message, type = 'info', redirectUrl = null) {
+    const messageBox = document.createElement('div');
+    messageBox.className = 'message-box';
+    messageBox.innerText = message;
+
+    messageBox.style.position = 'fixed';
+    messageBox.style.top = '20px';
+    messageBox.style.right = '20px';
+    messageBox.style.padding = '15px 25px';
+    messageBox.style.borderRadius = '8px';
+    messageBox.style.zIndex = '1000';
+    messageBox.style.color = 'white';
+    messageBox.style.fontWeight = 'bold';
+    messageBox.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+    messageBox.style.opacity = '0';
+    messageBox.style.transition = 'opacity 0.5s ease-in-out';
+
+    if (type === 'success') {
+        messageBox.style.backgroundColor = '#28a745'; // Verde para sucesso
+    } else if (type === 'error') {
+        messageBox.style.backgroundColor = '#dc3545'; // Vermelho para erro
+    } else {
+        messageBox.style.backgroundColor = '#007bff'; // Azul para informação
+    }
+
+    document.body.appendChild(messageBox);
+
+    setTimeout(() => {
+        messageBox.style.opacity = '1';
+    }, 100);
+
+    setTimeout(() => {
+        messageBox.style.opacity = '0';
+        messageBox.addEventListener('transitionend', () => {
+            messageBox.remove();
+            if (redirectUrl) {
+                window.location.href = redirectUrl;
+            }
+        });
+    }, 3000); // Exibe por 3 segundos
+}
 
 export function validateNome(nomeInput) {
     const nome = nomeInput.value.trim();
@@ -35,19 +77,30 @@ export function validateNome(nomeInput) {
 }
 
 export function validateDataNascimento(dataNascimentoInput) {
-    const dataNascimento = new Date(dataNascimentoInput.value);
-    const hoje = new Date();
-    const dataMinima = new Date();
-    dataMinima.setFullYear(hoje.getFullYear() - 100);
-
-    if (dataNascimentoInput.value === '') {
+    const dateValue = dataNascimentoInput.value;
+    if (dateValue === '') {
         showError(dataNascimentoInput, 'A data de nascimento é obrigatória.');
         return false;
-    } else if (dataNascimento > hoje) {
+    }
+
+    const dataNascimento = new Date(dateValue);
+    if (isNaN(dataNascimento.getTime())) {
+        showError(dataNascimentoInput, 'Formato de data inválido.');
+        return false;
+    }
+
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+
+    const dataMinima = new Date();
+    dataMinima.setFullYear(hoje.getFullYear() - 100);
+    dataMinima.setHours(0, 0, 0, 0);
+
+    if (dataNascimento > hoje) {
         showError(dataNascimentoInput, 'A data de nascimento não pode ser no futuro.');
         return false;
     } else if (dataNascimento < dataMinima) {
-        showError(dataNascimentoInput, 'Data de nascimento muito antiga.');
+        showError(dataNascimentoInput, `Data muito antiga (antes de ${dataMinima.toLocaleDateString('pt-BR')}).`);
         return false;
     } else {
         clearError(dataNascimentoInput);
@@ -75,7 +128,7 @@ export function validateTelefone(telefoneInput) {
         showError(telefoneInput, 'O telefone é obrigatório.');
         return false;
     } else if (telefone.length < 10 || telefone.length > 11) {
-        showError(telefoneInput, 'Telefone inválido (mínimo 10 ou 11 dígitos com DDD).');
+        showError(telefoneInput, 'Telefone inválido (10 ou 11 dígitos).');
         return false;
     } else {
         clearError(telefoneInput);
@@ -86,15 +139,15 @@ export function validateTelefone(telefoneInput) {
 export function validateEmail(emailInput) {
     const email = emailInput.value.trim();
     if (email === '') {
-        showError(emailInput, 'O e-mail é obrigatório.');
-        return false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showError(emailInput, 'Formato de e-mail inválido.');
-        return false;
-    } else {
         clearError(emailInput);
         return true;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError(emailInput, 'Formato de e-mail inválido.');
+        return false;
+    }
+    clearError(emailInput);
+    return true;
 }
 
 export function validateEndereco(ruaInput, numeroInput, bairroInput, cepInput) {
@@ -123,7 +176,7 @@ export function validateEndereco(ruaInput, numeroInput, bairroInput, cepInput) {
         showError(cepInput, 'CEP inválido (8 dígitos).');
         isValid = false;
     } else { clearError(cepInput); }
-    
+
     return isValid;
 }
 
@@ -135,7 +188,7 @@ export function validateEmailFuncionario(emailInput) {
         showError(emailInput, 'O e-mail é obrigatório.');
         return false;
     } else if (!regex.test(email)) {
-        showError(emailInput, 'Esse email não corresponde a um email da nossa base.');
+        showError(emailInput, 'Esse e-mail não é da nossa base.');
         return false;
     } else {
         clearError(emailInput);
@@ -157,16 +210,15 @@ export function validateSenha(senhaInput) {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    const cadastroForm = document.getElementById('cadastro-form'); 
+    const cadastroForm = document.getElementById('cadastro-form');
 
     if (cadastroForm) {
         const nomeInput = document.getElementById('nome');
         const dataNascimentoInput = document.getElementById('data-nascimento');
         const cpfInput = document.getElementById('cpf');
         const telefoneInput = document.getElementById('telefone');
-        const emailContatoInput = document.getElementById('email-contato'); 
+        const emailContatoInput = document.getElementById('email-contato');
         const ruaInput = document.getElementById('rua');
         const numeroInput = document.getElementById('numero');
         const bairroInput = document.getElementById('bairro');
@@ -176,7 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
         dataNascimentoInput.addEventListener('blur', () => validateDataNascimento(dataNascimentoInput));
         cpfInput.addEventListener('blur', () => validateCpf(cpfInput));
         telefoneInput.addEventListener('blur', () => validateTelefone(telefoneInput));
-        emailContatoInput.addEventListener('blur', () => validateEmail(emailContatoInput)); 
+
+        if (emailContatoInput) {
+            emailContatoInput.addEventListener('blur', () => validateEmail(emailContatoInput));
+        }
 
         [ruaInput, numeroInput, bairroInput, cepInput].forEach(input => {
             input.addEventListener('blur', () => validateEndereco(ruaInput, numeroInput, bairroInput, cepInput));
@@ -185,22 +240,25 @@ document.addEventListener('DOMContentLoaded', () => {
         cadastroForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const isNomeValid = validateNome(nomeInput);
-            const isDataNascimentoValid = validateDataNascimento(dataNascimentoInput);
-            const isCpfValid = validateCpf(cpfInput);
-            const isTelefoneValid = validateTelefone(telefoneInput);
-            const isEmailValid = validateEmail(emailContatoInput);
-            const isEnderecoValid = validateEndereco(ruaInput, numeroInput, bairroInput, cepInput);
+            const isEmailContatoValid = emailContatoInput ? validateEmail(emailContatoInput) : true;
 
-            if (isNomeValid && isDataNascimentoValid && isCpfValid && isTelefoneValid && isEmailValid && isEnderecoValid) {
-                alert('Formulário de Cadastro enviado com sucesso! (Dados serão processados pela Defesa Civil)');
+            const isValid =
+                validateNome(nomeInput) &&
+                validateDataNascimento(dataNascimentoInput) &&
+                validateCpf(cpfInput) &&
+                validateTelefone(telefoneInput) &&
+                isEmailContatoValid &&
+                validateEndereco(ruaInput, numeroInput, bairroInput, cepInput);
+
+            if (isValid) {
+                displayMessage('Você foi cadastrado com sucesso!', 'success', 'paginacivil.html');
             } else {
-                alert('Por favor, corrija os erros no formulário de cadastro antes de enviar.');
+                displayMessage('Corrija os erros antes de continuar.', 'error');
             }
         });
     }
 
-    const loginForm = document.getElementById('login-form'); 
+    const loginForm = document.getElementById('login-form');
 
     if (loginForm) {
         const emailInputLogin = document.getElementById('email');
@@ -215,21 +273,31 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const isEmailFormatValid = validateEmailFuncionario(emailInputLogin);
-            const isSenhaFormatValid = validateSenha(senhaInputLogin);
+            const isEmailValid = validateEmailFuncionario(emailInputLogin);
+            const isSenhaValid = validateSenha(senhaInputLogin);
 
-            if (isEmailFormatValid && isSenhaFormatValid) {
-                const enteredEmail = emailInputLogin.value.trim();
-                const enteredSenha = senhaInputLogin.value.trim();
+            if (!isEmailValid || !isSenhaValid) {
+                displayMessage('Por favor, corrija os erros no formulário de login.', 'error');
+                return;
+            }
 
-                if (enteredEmail === CORRECT_EMAIL && enteredSenha === CORRECT_PASSWORD) {
-                    alert('Login efetuado com sucesso!');
-                    window.location.href = 'paginafuncionario.html';
-                    alert('Login incorreto.'); 
-                    senhaInputLogin.value = ''; 
+            const enteredEmail = emailInputLogin.value.trim();
+            const enteredSenha = senhaInputLogin.value.trim();
+
+            if (enteredEmail === CORRECT_EMAIL) {
+                if (enteredSenha === CORRECT_PASSWORD) {
+                    displayMessage('Login efetuado com sucesso!', 'success', 'paginafuncionario.html');
+                } else {
+                    showError(senhaInputLogin, 'Senha incorreta.');
+                    displayMessage('Senha incorreta.', 'error');
+                    senhaInputLogin.value = '';
+                    senhaInputLogin.focus();
                 }
             } else {
-                alert('Por favor, corrija os erros no formulário de login antes de tentar entrar.');
+                showError(emailInputLogin, 'E-mail não cadastrado ou incorreto.');
+                displayMessage('E-mail não cadastrado ou incorreto.', 'error');
+                senhaInputLogin.value = '';
+                emailInputLogin.focus();
             }
         });
     }

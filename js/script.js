@@ -1,3 +1,19 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Lógica de Rolagem Suave (já existente) ---
+    const backToTopLink = document.querySelector('a[href="#topo"]');
+
+    if (backToTopLink) {
+        backToTopLink.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }// Fim do if (document.getElementById('mapa'))
+});
+
 document.addEventListener('DOMContentLoaded', () => { // Adicionando o evento DOMContentLoaded
     // Inicializa o mapa no Jardim Paulista
     const mapa = L.map("mapa").setView([-23.561414, -46.655881], 15);

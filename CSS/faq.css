@@ -4,7 +4,7 @@
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
-    background: #fff;
+    background: var(--branco);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -71,7 +71,7 @@
 }
 
 .duvida:hover {
-    background-color: #f9f9f9;
+    background-color: var(--branco-cinzento);
 }
 
 .pergunta {
@@ -133,4 +133,93 @@
     display: inline-block;
     padding: 1rem 2.5rem;
     font-size: 1.25rem;
+}
+
+@media (max-width: 768px) { /* Medium devices - Tablets */
+    .faq-container {
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    .faq-inicio {
+        padding: 30px 15px;
+    }
+
+    .faq-inicio h1 {
+        font-size: 2.4rem;
+    }
+
+    .faq-inicio p {
+        font-size: 1rem;
+    }
+
+    #faq-search {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
+
+    .faq-categoria-titulo {
+        font-size: 1.3rem;
+    }
+
+    .pergunta {
+        font-size: 1.05rem;
+    }
+
+    .faq-contato-cta {
+        margin: 40px auto;
+        padding: 30px;
+    }
+
+    .faq-contato-cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .faq-contato-cta p {
+        font-size: 1rem;
+    }
+
+    .faq-contato-cta .btn-azul-grande {
+        padding: 0.9rem 2rem;
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 576px) { /* Small devices - Phones */
+    .faq-container {
+        margin: 20px 10px; /* Adjusted margin for better fit */
+        padding: 10px;
+    }
+
+    .faq-inicio {
+        padding: 20px 10px;
+        margin-bottom: 15px;
+    }
+
+    .faq-inicio h1 {
+        font-size: 2rem;
+    }
+
+    .faq-categoria-titulo {
+        font-size: 1.2rem;
+    }
+
+    .pergunta {
+        font-size: 1rem;
+    }
+    
+    .resposta-da-duvida {
+        font-size: 0.9rem;
+    }
+
+    .faq-contato-cta h2 {
+        font-size: 1.6rem;
+    }
+
+    .faq-contato-cta .btn-azul-grande {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        width: 90%; /* Make button take more width */
+        box-sizing: border-box;
+    }
 }

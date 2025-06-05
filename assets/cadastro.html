@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SaveUs - Cadastro para Defesa Civil</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/nofooter.css"> 
+    <link rel="stylesheet" href="../css/nofooter.css">
     <script src="../js/script.js" defer></script>
     <script src="../js/validadores.js" defer></script>
 </head>
@@ -17,21 +17,21 @@
             <a href="../index.html"><img src="./img/Logo.png" alt="Logo SaveUs" /></a>
         </div>
         <div class="botoes-header">
-            <a href="./entrar.html" class="btn-transparente">Sou Funcionario</a>
+            <a href="./entrar.html" class="btn-transparente">Sou Funcionário</a>
             <a href="./cadastro.html" class="btn-azul">Sou Civil</a>
         </div>
     </header>
 
     <main class="hero">
         <div class="container-form">
-            <form class="form-card">
+            <form class="form-card" id="cadastro-form">
                 <h2>CADASTRO DE CIVIL</h2>
-                
+
                 <div class="input-grupo">
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" placeholder="Seu nome completo" required>
                 </div>
-                
+
                 <div class="input-grupo">
                     <label for="data-nascimento">Data de Nascimento</label>
                     <input type="date" id="data-nascimento" required>
@@ -39,12 +39,15 @@
 
                 <div class="input-grupo">
                     <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" required>
+                    <input type="text" id="cpf" placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+                        title="Formato: 000.000.000-00" required>
                 </div>
-                
+
                 <div class="input-grupo">
                     <label for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" placeholder="(DD) 99999-9999" pattern="\(\d{2}\) \d{5}-\d{4}|\(\d{2}\) \d{4}-\d{4}" title="Formato: (DD) 99999-9999 ou (DD) 9999-9999" required>
+                    <input type="tel" id="telefone" placeholder="(DD) 99999-9999"
+                        pattern="\(\d{2}\) \d{5}-\d{4}|\(\d{2}\) \d{4}-\d{4}"
+                        title="Formato: (DD) 99999-9999 ou (DD) 9999-9999" required>
                 </div>
 
                 <div class="input-grupo">
@@ -70,7 +73,8 @@
                 <div class="input-grupo grupo-inline">
                     <div class="input-coluna">
                         <label for="cep">CEP</label>
-                        <input type="text" id="cep" placeholder="00000-000" pattern="\d{5}-\d{3}" title="Formato: 00000-000" required>
+                        <input type="text" id="cep" placeholder="00000-000" pattern="\d{5}-\d{3}"
+                            title="Formato: 00000-000" required>
                     </div>
                     <div class="input-coluna">
                         <label for="complemento">Complemento (Opcional)</label>
@@ -87,9 +91,9 @@
                     <input type="checkbox" id="mobilidade-reduzida">
                     <label for="mobilidade-reduzida">Tenho Mobilidade Reduzida</label>
                 </div>
-                
-                <button type="submit" class="btn-azul-grande">Registrar Pessoa</button>
-                </form>
+
+                <button type="submit" class="btn-azul-grande">Cadastrar</button>
+            </form>
         </div>
     </main>
 

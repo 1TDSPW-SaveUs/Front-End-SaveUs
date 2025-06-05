@@ -34,6 +34,23 @@
     --cor-mapa-botao-hover: #1aa4ba;
     --cor-lateral-filtros: #E6E6E6;
     --cor-botao-todas: #ADD8E6;
+
+    --altura-cabecalho: 95px;
+    --altura-rodape: 200px;
+    --cor-fundo-filtros-claro: #e3f9f5;
+    --cor-texto-escuro: #333;
+    --cor-separador: #ccc;
+    --sombra-lateral-filtros: rgba(0, 0, 0, 0.08);
+    --sombra-mapa: rgba(0,0,0,0.1);
+    --sombra-botao-lateral: rgba(0, 0, 0, 0.1);
+    --cor-botao-lateral-fundo: #f0f0f0;
+    --cor-botao-lateral-hover: #e0e0e0;
+    --sombra-botao-lateral-hover: rgba(0, 0, 0, 0.15);
+
+    --cor-prioridade-maxima: #dc3545;
+    --cor-prioridade-alta: #fd7e14;
+    --cor-prioridade-media: #ffc107;
+    --cor-prioridade-baixa: #28a745;
 }
 
 * {
@@ -316,7 +333,7 @@ main {
 }
 
 body.pagina-mapa {
-    /* overflow: hidden; */ /* Removido para permitir rolagem e visualização do rodapé */
+    /* overflow: hidden; */
 }
 
 .hero-painel-funcionario {
@@ -328,45 +345,43 @@ body.pagina-mapa {
     height: 100%;
     width: 100%;
     margin: 0;
+    min-height: calc(100vh - var(--altura-cabecalho) - var(--altura-rodape));
 }
 
 .filtros-lateral {
-  background: linear-gradient(to bottom, #ffffff, #e3f9f5);
-  width: 300px;
-  padding: 30px 15px;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  flex-shrink: 0;
-  height: 100%;
+    background: linear-gradient(to bottom, var(--branco), var(--cor-fundo-filtros-claro));
+    width: 300px;
+    padding: 30px 15px;
+    box-shadow: 2px 0 10px var(--sombra-lateral-filtros);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+    height: 100%;
 }
-
 
 .riscos-titulo {
-  font-size: 1.5rem;
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: center;
+    font-size: 1.5rem;
+    color: var(--cor-texto-escuro);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
-
 .separador-filtros {
-  width: 80%;
-  height: 1px;
-  background-color: #ccc;
-  margin: 10px 0;
+    width: 80%;
+    height: 1px;
+    background-color: var(--cor-separador);
+    margin: 10px 0;
 }
 
 #mapa {
-    height: 500px; /* Definido a partir do estilo inline original */
+    height: 100%;
     flex-grow: 1;
-    width: 100%;   /* Definido a partir do estilo inline original */
+    width: calc(100% - 300px);
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-top: 20px; /* Definido a partir do estilo inline original */
+    box-shadow: 0 2px 8px var(--sombra-mapa);
 }
 
 .filtros {
@@ -396,118 +411,143 @@ body.pagina-mapa {
     padding: 15px 10px;
     font-size: 1.1rem;
     text-align: center;
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: var(--cor-botao-lateral-fundo);
+    color: var(--cor-texto-escuro);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px var(--sombra-botao-lateral);
 }
 
 .btn-mapa-lateral:hover {
-    background-color: #e0e0e0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: var(--cor-botao-lateral-hover);
+    box-shadow: 0 4px 8px var(--sombra-botao-lateral-hover);
 }
 
 .btn-mapa-maxima {
-    background-color: #ff4545;
+    background-color: var(--cor-prioridade-maxima);
     border: 2px solid transparent;
     color: var(--branco);
 }
 
 .btn-mapa-maxima:hover {
     background-color: transparent;
-    border: 2px solid #ff4545;
-    color: #ff4545;
+    border: 2px solid var(--cor-prioridade-maxima);
+    color: var(--cor-prioridade-maxima);
     transition: 0.2s ease-out;
 }
 
 .btn-mapa-alta {
-    background-color: #e67642;
+    background-color: var(--cor-prioridade-alta);
     border: 2px solid transparent;
     color: var(--branco);
 }
 
 .btn-mapa-alta:hover {
     background-color: transparent;
-    border: 2px solid #e67642;
-    color: #e67642;
+    border: 2px solid var(--cor-prioridade-alta);
+    color: var(--cor-prioridade-alta);
     transition: 0.2s ease-out;
 }
 
 .btn-mapa-media {
-    background-color: #ffc107;
+    background-color: var(--cor-prioridade-media);
     border: 2px solid transparent;
     color: var(--branco);
 }
 
 .btn-mapa-media:hover {
     background-color: transparent;
-    border: 2px solid #ffc107;
-    color: #ffc107;
+    border: 2px solid var(--cor-prioridade-media);
+    color: var(--cor-prioridade-media);
     transition: 0.2s ease-out;
 }
 
 .btn-mapa-baixa {
-    background-color: #28a745;
+    background-color: var(--cor-prioridade-baixa);
     border: 2px solid transparent;
     color: var(--branco);
 }
 
 .btn-mapa-baixa:hover {
     background-color: transparent;
-    border: 2px solid #28a745;
-    color: #28a745;
+    border: 2px solid var(--cor-prioridade-baixa);
+    color: var(--cor-prioridade-baixa);
     transition: 0.2s ease-out;
 }
 
 .btn-mapa-todas {
-    background-color: var(--azul-escuro); /* Alinhado com a cor base do exemplo */
+    background-color: var(--azul-escuro);
     border: 2px solid transparent;
     color: var(--branco);
 }
 
 .btn-mapa-todas:hover {
     background-color: transparent;
-    border: 2px solid var(--azul-escuro); /* Consistente com a cor base */
-    color: var(--azul-escuro); /* Consistente com a cor base */
-    transition: 0.2s ease-out; /* Mantém transição suave como outros botões de filtro */
+    border: 2px solid var(--azul-escuro);
+    color: var(--azul-escuro);
+    transition: 0.2s ease-out;
 }
 
 .marker-prioridade-baixa {
-    background-color: #28a745;
+    background-color: var(--cor-prioridade-baixa);
     border-radius: 50%;
     width: 14px;
     height: 14px;
-    border: 2px solid white;
+    border: 2px solid var(--branco);
 }
 
 .marker-prioridade-media {
-    background-color: #ffc107;
+    background-color: var(--cor-prioridade-media);
     border-radius: 50%;
     width: 14px;
     height: 14px;
-    border: 2px solid white;
+    border: 2px solid var(--branco);
 }
 
 .marker-prioridade-alta {
-    background-color: #e67642;
+    background-color: var(--cor-prioridade-alta);
     border-radius: 50%;
     width: 14px;
     height: 14px;
-    border: 2px solid white;
+    border: 2px solid var(--branco);
 }
 
 .marker-prioridade-maxima {
-    background-color: #ff4545;
+    background-color: var(--cor-prioridade-maxima);
     border-radius: 50%;
     width: 14px;
     height: 14px;
-    border: 2px solid white;
+    border: 2px solid var(--branco);
+}
+
+@media (max-width: 992px) { /* Medium devices / Large tablets */
+    .hero {
+        padding: 2rem 3rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-texto {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+    .hero-texto p {
+        max-width: 100%;
+    }
+    .hero-mapa {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .hero-integrantes {
+        padding: 2rem 3rem;
+    }
 }
 
 @media (max-width: 768px) {
     .hero-painel-funcionario {
         flex-direction: column;
+        min-height: auto;
     }
 
     .filtros-lateral {
@@ -538,6 +578,24 @@ body.pagina-mapa {
     #mapa {
         height: 400px;
         width: 100%;
+        margin-top: 0;
+    }
+
+    .hero { /* Adjustments for general hero section */
+        padding: 2rem 1.5rem;
+    }
+    .hero-texto h1 {
+        font-size: 2rem;
+    }
+    .hero-texto p {
+        font-size: 1rem;
+    }
+    .hero-mapa {
+        width: 90%;
+    }
+
+    .hero-integrantes { /* Adjustments for .hero-integrantes */
+        padding: 2rem 1.5rem;
     }
 
     .filtros {
@@ -548,6 +606,13 @@ body.pagina-mapa {
         flex-direction: column;
         text-align: center;
     }
+    .titulo-integrantes h1 {
+        font-size: 2.2rem;
+    }
+    .titulo-integrantes p {
+        font-size: 1rem;
+    }
+
 
     .integrante-foto {
         margin-bottom: 1rem;
@@ -560,10 +625,54 @@ body.pagina-mapa {
 
 @media (max-width: 480px) {
     .hero-painel-funcionario {
-        padding: 0;
+        padding: 0; /* This was already here */
     }
 
     .btn-mapa-lateral {
-        max-width: 100%;
+        max-width: 100%; /* This was already here */
+    }
+
+    .cabecalho {
+        padding: 0.5rem 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .logo img {
+        height: 60px;
+    }
+    .botoes-header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .btn-transparente, .btn-azul {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .hero { /* Adjustments for general hero section */
+        padding: 1.5rem 1rem;
+    }
+    .hero-texto h1 {
+        font-size: 1.8rem;
+    }
+    .hero-texto p {
+        font-size: 0.9rem;
+    }
+    .hero-mapa {
+        width: 100%;
+    }
+
+    .hero-integrantes { /* Further adjustments for .hero-integrantes */
+        padding: 1.5rem 1rem;
+    }
+    .titulo-integrantes h1 {
+        font-size: 2rem;
+    }
+    .integrante-foto {
+        width: 120px;
+        height: 120px;
+    }
+    .integrante-texto h3 {
+        font-size: 1.3rem;
     }
 }

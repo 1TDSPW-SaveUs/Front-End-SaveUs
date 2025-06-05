@@ -181,6 +181,29 @@
     width: 100%; /* Ocupa a largura total do grupo */
 }
 
+@media (max-width: 768px) { /* Medium devices - Tablets */
+    .hero {
+        padding: 1.5rem;
+        min-height: calc(100vh - 80px); /* Adjust if header height changes */
+    }
+
+    .form-card {
+        padding: 2.5rem 2.5rem;
+        max-width: 90%;
+    }
+
+    .form-card h2 {
+        font-size: 2rem;
+    }
+
+    .form-card h3 {
+        font-size: 1.3rem;
+    }
+    /* .grupo-inline could remain row or switch to column if needed earlier */
+    /* For now, assuming row is fine until 600px due to form's max-width */
+}
+
+
 @media (max-width: 600px) {
     .hero {
         padding: 1rem;

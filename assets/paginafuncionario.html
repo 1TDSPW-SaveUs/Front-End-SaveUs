@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel do Funcionário - SaveUs</title>
     <link rel="stylesheet" href="../CSS/nofooter.css" />
+     <link rel="stylesheet" href="../CSS/style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
     <script src="../js/script.js" defer></script>
@@ -25,35 +26,14 @@
             <button class="btn-mapa-lateral btn-mapa-baixa" onclick="filtrarPontos('baixa')">Prioridade Baixa</button>
             <button class="btn-mapa-lateral btn-mapa-media" onclick="filtrarPontos('media')">Prioridade Média</button>
             <button class="btn-mapa-lateral btn-mapa-alta" onclick="filtrarPontos('alta')">Prioridade Alta</button>
-            <button class="btn-mapa-lateral btn-mapa-maxima" onclick="filtrarPontos('maxima')">Prioridade
-                Máxima</button>
+            <button class="btn-mapa-lateral btn-mapa-maxima" onclick="filtrarPontos('maxima')">Prioridade Máxima</button>
         </div>
         <div id="mapa"></div>
     </main>
 
-    <footer class="rodape">
-        <div class="coluna descricao">
-            <h3>Descrição</h3>
-            <p>Plataforma de apoio em desastres. Unindo tecnologia e solidariedade para salvar vidas.</p>
-            <p>Desenvolvido como projeto acadêmico na FIAP</p>
-        </div>
-        <div class="coluna">
-            <h3>Links Rápidos</h3>
-            <ul>
-                <li><a href="./faq.html">Sobre o Projeto</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="./integrantes.html">Integrantes</a></li>
-                <li><a href="#topo">Voltar ao Topo</a></li>
-            </ul>
-        </div>
-        <div class="coluna">
-            <h3>Contato</h3>
-            <p>Email: contato@saveus.org</p>
-            <p>Telefone: (11) 99999-9999</p>
-            <p>Endereço: Rua Solidária, 100 - São Paulo/SP</p>
-        </div>
+    <footer class="rodape rodape-reduzido">
         <div class="copyright">
-            <p>&copy; SaveUs FIAP - 2025</p>
+            © SaveUs FIAP - 2025
         </div>
     </footer>
 </body>

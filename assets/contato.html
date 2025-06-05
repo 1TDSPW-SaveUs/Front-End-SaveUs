@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SaveUs - Contato</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/nofooter.css"> <!-- Usar nofooter para estilos de formulário -->
-    <script src="../js/script.js" defer></script> 
-    <!-- Se houver JS específico para contato, adicione aqui. Ex: <script src="../js/contato.js" defer></script> -->
+    <link rel="stylesheet" href="../css/nofooter.css">
+    <script src="../js/script.js" defer></script>
+    <script src="../js/chatbot.js" defer></script>
 </head>
 
 <body>
@@ -26,7 +26,8 @@
         <div class="container-form">
             <form class="form-card" id="contato-form">
                 <h2>ENTRE EM CONTATO</h2>
-                <p style="text-align: center; margin-top: -1.5rem; margin-bottom: 1.5rem; color: var(--cor-texto-principal);">
+                <p
+                    style="text-align: center; margin-top: -1.5rem; margin-bottom: 1.5rem; color: var(--cor-texto-principal);">
                     Tem alguma dúvida, sugestão ou precisa de ajuda? Preencha o formulário abaixo.
                 </p>
 
@@ -47,7 +48,8 @@
 
                 <div class="input-grupo">
                     <label for="mensagem-contato">Mensagem</label>
-                    <textarea id="mensagem-contato" rows="5" placeholder="Digite sua mensagem aqui..." required style="padding: 1rem 1.2rem; border: 1px solid var(--cor-borda-input); border-radius: 8px; font-size: 1.05rem; width: 100%; background-color: var(--branco); color: var(--preto); font-family: Arial, sans-serif; resize: vertical;"></textarea>
+                    <textarea id="mensagem-contato" rows="5" placeholder="Digite sua mensagem aqui..." required
+                        style="padding: 1rem 1.2rem; border: 1px solid var(--cor-borda-input); border-radius: 8px; font-size: 1.05rem; width: 100%; background-color: var(--branco); color: var(--preto); font-family: Arial, sans-serif; resize: vertical;"></textarea>
                 </div>
 
                 <button type="submit" class="btn-azul-grande">Enviar Mensagem</button>
@@ -70,11 +72,13 @@
                 <li><a href="#topo">Voltar ao Topo</a></li>
             </ul>
         </div>
-        <div class="coluna">
-            <h3>Contato</h3>
-            <p>Email: contato@saveus.org</p>
-            <p>Telefone: (11) 99999-9999</p>
-            <p>Endereço: Rua Solidária, 100 - São Paulo/SP</p>
+        <div class="coluna contatos">
+            <h3>Contatos</h3>
+            <ul>
+                <li>Email: emailexemplo@gmail.com</li>
+                <li>Tel: 11 9 6969-6969</li>
+                <li>end: Rua Endereço Teste</li>
+            </ul>
         </div>
         <div class="copyright">
             <p>&copy; SaveUs FIAP - 2025</p>

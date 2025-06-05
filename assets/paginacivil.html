@@ -4,18 +4,39 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Painel do Funcionário - SaveUs</title>
+    <title>SaveUs - Painel do Civil</title>
+    <link rel="stylesheet" href="../CSS/style.css" /> <!-- Adicionado style.css para base e novos estilos -->
     <link rel="stylesheet" href="../CSS/nofooter.css" />
-    <script src="../js/script.js" defer></script>
+    <script src="../js/script.js" defer></script> <!-- Script geral, pode conter outras funcionalidades -->
+    <script src="../js/civil.js" defer></script> <!-- Script específico para esta página -->
 </head>
 
-<body class="pagina-mapa">
+<body> <!-- Removida a classe pagina-mapa, pois não haverá mapa aqui -->
     <header class="cabecalho">
         <div class="logo">
             <a href="../index.html"><img src="../assets/img/Logo.png" alt="Logo SaveUs" /></a>
         </div>
     </header>
 
+    <main class="hero-painel-civil"> <!-- Nova classe para o painel civil -->
+        <div class="filtros-lateral-civil">
+            <h2 class="titulo-lateral-civil">Tipos de Alertas</h2>
+            <button class="btn-desastre" data-tipo="enchentes">Enchentes</button>
+            <button class="btn-desastre" data-tipo="incendios">Incêndios</button>
+            <button class="btn-desastre" data-tipo="falta-energia">Falta de Energia</button>
+            <button class="btn-desastre" data-tipo="ondas-calor">Ondas de Calor</button>
+            <button class="btn-desastre" data-tipo="frio-intenso">Frio Intenso</button>
+            <button class="btn-desastre" data-tipo="ventos-fortes">Ventos Fortes</button>
+            <button class="btn-desastre" data-tipo="deslizamentos">Deslizamentos</button>
+        </div>
+        <div class="conteudo-desastre-civil">
+            <h1 id="titulo-desastre">Bem-vindo à Central de Alertas</h1>
+            <p id="descricao-desastre">
+                Selecione um tipo de alerta na coluna à esquerda para visualizar informações importantes,
+                dicas de segurança e como se proteger em cada situação. Sua preparação pode fazer toda a diferença.
+            </p>
+            <!-- Mais seções de conteúdo podem ser adicionadas aqui, como "O que fazer antes, durante e depois" -->
+        </div>
     </main>
 
     <footer class="rodape">

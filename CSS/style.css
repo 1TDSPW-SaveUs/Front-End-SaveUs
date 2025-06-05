@@ -348,25 +348,26 @@ body.pagina-mapa {
     min-height: calc(100vh - var(--altura-cabecalho) - var(--altura-rodape));
 }
 
+/* --- Filtros para a página do funcionário (mapa) --- */
 .filtros-lateral {
-    background: linear-gradient(to bottom, var(--branco), var(--cor-fundo-filtros-claro));
-    width: 300px;
-    padding: 30px 15px;
-    box-shadow: 2px 0 10px var(--sombra-lateral-filtros);
+    width: 280px; /* Largura da coluna lateral */
+    padding: 25px 15px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    gap: 12px; /* Espaçamento entre os botões */
     flex-shrink: 0;
     height: 100%;
+    overflow-y: auto; /* Adicionado para rolagem caso muitos botões */
 }
 
 .riscos-titulo {
-    font-size: 1.5rem;
-    color: var(--cor-texto-escuro);
+    font-size: 1.6rem; /* Ajustado para ser como o civil */
+    color: var(--azul-escuro); /* Ajustado para ser como o civil */
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Ajustado para ser como o civil */
     text-align: center;
+    padding-bottom: 10px; /* Adicionado borda inferior */
+    border-bottom: 2px solid var(--azul-escuro); /* Adicionado borda inferior */
 }
 
 .separador-filtros {
@@ -374,15 +375,16 @@ body.pagina-mapa {
     height: 1px;
     background-color: var(--cor-separador);
     margin: 10px 0;
+    display: none; /* Mantido oculto se não for usado */
 }
 
 #mapa {
-    height: 500px; 
+    height: 500px; /* Pode precisar de ajuste com base no min-height do hero-painel-funcionario */
     flex-grow: 1;
-    width: 100%;  
+    width: 100%;
     border-radius: 8px;
     box-shadow: 0 2px 8px var(--sombra-mapa);
-    margin-top: 20px; 
+    margin: 20px 0px; /* Removido se o hero-painel-funcionario tiver padding 0 */
 }
 
 
@@ -407,35 +409,42 @@ body.pagina-mapa {
     transform: translateY(-2px);
 }
 
-.btn-mapa-lateral {
-    width: calc(100% - 30px);
-    margin: 8px 0;
-    padding: 15px 10px;
-    font-size: 1.1rem;
-    text-align: center;
-    background-color: var(--cor-botao-lateral-fundo);
-    color: var(--cor-texto-escuro);
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px var(--sombra-botao-lateral);
+/* Unificação dos estilos de botão lateral para funcionario e civil */
+.btn-mapa-lateral, .btn-desastre {
+    width: 100%; /* Ocupa a largura total */
+    padding: 12px 10px; /* Padding igual */
+    font-size: 1.05rem; /* Tamanho da fonte igual */
+    text-align: left; /* Alinhamento do texto à esquerda */
+    background-color: var(--cor-botao-lateral-fundo); /* Cor de fundo padrão */
+    color: var(--cor-texto-escuro); /* Cor do texto padrão */
+    border: 1px solid transparent; /* Borda transparente */
+    border-radius: 6px; /* Borda arredondada */
+    cursor: pointer; /* Cursor de ponteiro */
+    transition: all 0.3s ease; /* Transição suave para todas as propriedades */
+    font-weight: 500; /* Peso da fonte */
 }
 
-.btn-mapa-lateral:hover {
-    background-color: var(--cor-botao-lateral-hover);
-    box-shadow: 0 4px 8px var(--sombra-botao-lateral-hover);
+.btn-mapa-lateral:hover, .btn-mapa-lateral.active,
+.btn-desastre:hover, .btn-desastre.ativo {
+    background-color: var(--azul-escuro); /* Cor de fundo no hover/ativo */
+    color: var(--branco); /* Cor do texto no hover/ativo */
+    border-color: var(--azul-escuro); /* Cor da borda no hover/ativo */
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3); /* Sombra no hover/ativo */
+    transform: translateY(-1px); /* Leve elevação no hover/ativo */
 }
 
+/* Estilos de cor específicos para os botões de prioridade (não alterados, apenas alinhados ao novo estilo de hover/active) */
 .btn-mapa-maxima {
     background-color: var(--cor-prioridade-maxima);
     border: 2px solid transparent;
     color: var(--branco);
 }
 
-.btn-mapa-maxima:hover {
-    background-color: transparent;
-    border: 2px solid var(--cor-prioridade-maxima);
-    color: var(--cor-prioridade-maxima);
-    transition: 0.2s ease-out;
+.btn-mapa-maxima:hover, .btn-mapa-maxima.active {
+    background-color: var(--cor-prioridade-maxima);
+    color: var(--branco);
+    border-color: var(--cor-prioridade-maxima);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3); /* Sombra específica para máxima */
 }
 
 .btn-mapa-alta {
@@ -444,11 +453,11 @@ body.pagina-mapa {
     color: var(--branco);
 }
 
-.btn-mapa-alta:hover {
-    background-color: transparent;
-    border: 2px solid var(--cor-prioridade-alta);
-    color: var(--cor-prioridade-alta);
-    transition: 0.2s ease-out;
+.btn-mapa-alta:hover, .btn-mapa-alta.active {
+    background-color: var(--cor-prioridade-alta);
+    color: var(--branco);
+    border-color: var(--cor-prioridade-alta);
+    box-shadow: 0 2px 8px rgba(253, 126, 20, 0.3); /* Sombra específica para alta */
 }
 
 .btn-mapa-media {
@@ -457,11 +466,11 @@ body.pagina-mapa {
     color: var(--branco);
 }
 
-.btn-mapa-media:hover {
-    background-color: transparent;
-    border: 2px solid var(--cor-prioridade-media);
-    color: var(--cor-prioridade-media);
-    transition: 0.2s ease-out;
+.btn-mapa-media:hover, .btn-mapa-media.active {
+    background-color: var(--cor-prioridade-media);
+    color: var(--branco);
+    border-color: var(--cor-prioridade-media);
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3); /* Sombra específica para média */
 }
 
 .btn-mapa-baixa {
@@ -470,11 +479,11 @@ body.pagina-mapa {
     color: var(--branco);
 }
 
-.btn-mapa-baixa:hover {
-    background-color: transparent;
-    border: 2px solid var(--cor-prioridade-baixa);
-    color: var(--cor-prioridade-baixa);
-    transition: 0.2s ease-out;
+.btn-mapa-baixa:hover, .btn-mapa-baixa.active {
+    background-color: var(--cor-prioridade-baixa);
+    color: var(--branco);
+    border-color: var(--cor-prioridade-baixa);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3); /* Sombra específica para baixa */
 }
 
 .btn-mapa-todas {
@@ -483,11 +492,11 @@ body.pagina-mapa {
     color: var(--branco);
 }
 
-.btn-mapa-todas:hover {
-    background-color: transparent;
-    border: 2px solid var(--azul-escuro);
-    color: var(--azul-escuro);
-    transition: 0.2s ease-out;
+.btn-mapa-todas:hover, .btn-mapa-todas.active {
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    border-color: var(--azul-escuro);
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3); /* Sombra padrão do azul */
 }
 
 .marker-prioridade-baixa {
@@ -575,6 +584,7 @@ body.pagina-mapa {
         width: auto;
         flex-grow: 1;
         margin: 5px;
+        text-align: center; /* Centralizado para telas menores */
     }
 
     #mapa {
@@ -598,10 +608,6 @@ body.pagina-mapa {
 
     .hero-integrantes { /* Adjustments for .hero-integrantes */
         padding: 2rem 1.5rem;
-    }
-
-    .filtros {
-        display: none;
     }
 
     .integrante-card {
@@ -676,5 +682,90 @@ body.pagina-mapa {
     }
     .integrante-texto h3 {
         font-size: 1.3rem;
+    }
+}
+
+/* Estilos para a Página Civil de Alertas */
+.hero-painel-civil {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background: var(--cor-fundo);
+    min-height: calc(100vh - var(--altura-cabecalho) - var(--altura-rodape)); /* Ajusta altura para preencher espaço entre header e footer */
+    width: 100%;
+}
+
+.filtros-lateral-civil {
+    width: 280px; /* Largura da coluna lateral */
+    padding: 25px 15px;
+    box-shadow: 2px 0 10px var(--sombra-lateral-filtros);
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espaçamento entre os botões */
+    flex-shrink: 0;
+    overflow-y: auto; /* Caso haja muitos botões */
+}
+
+.titulo-lateral-civil {
+    font-size: 1.6rem;
+    color: var(--azul-escuro);
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--azul-escuro);
+}
+
+/* O .btn-desastre já foi unificado acima com .btn-mapa-lateral */
+
+.conteudo-desastre-civil {
+    flex-grow: 1;
+    padding: 30px 40px;
+    overflow-y: auto; /* Para conteúdo extenso */
+    background-color: var(--cor-fundo);
+}
+
+.conteudo-desastre-civil h1 {
+    font-size: 2.2rem;
+    color: var(--azul-escuro);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--cor-separador);
+    padding-bottom: 0.8rem;
+}
+
+.conteudo-desastre-civil p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--cor-texto-principal);
+    margin-bottom: 1rem;
+}
+
+/* Media queries para responsividade da página civil (similar à paginafuncionario) */
+@media (max-width: 768px) {
+    .hero-painel-civil {
+        flex-direction: column;
+    }
+    .filtros-lateral-civil {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px;
+    }
+    .titulo-lateral-civil {
+        width: 100%;
+    }
+    .btn-desastre {
+        width: auto;
+        flex-grow: 1;
+        margin: 5px;
+        text-align: center;
+    }
+    .conteudo-desastre-civil {
+        padding: 20px;
+    }
+    .conteudo-desastre-civil h1 {
+        font-size: 1.8rem;
     }
 }

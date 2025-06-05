@@ -1,49 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
- 
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SaveUs - Painel do Funcionário</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/nofooter.css"> <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoCcT2fXFjGkC90l40a7oK8E/gC58+rC9vK7m8=" crossorigin="" />
- 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20n6FLzYxP6L0N/H6vEwM9J4hT8dGq3SgN4g0d2U3g=" crossorigin=""></script>
+    <title>Painel do Funcionário - SaveUs</title>
+    <link rel="stylesheet" href="../CSS/nofooter.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
     <script src="../js/script.js" defer></script>
 </head>
- 
+
 <body class="pagina-mapa">
     <header class="cabecalho">
         <div class="logo">
-            <a href="../index.html"><img src="./img/Logo.png" alt="Logo SaveUs" /></a>
-        </div>
-        <div class="botoes-header">
-            <a href="./entrar.html" class="btn-transparente">Sou Funcionário</a>
-            <a href="./cadastro.html" class="btn-azul">Sou Civil</a>
+            <a href="../index.html"><img src="../assets/img/Logo.png" alt="Logo SaveUs" /></a>
         </div>
     </header>
- 
-    <main class="hero hero-painel-funcionario">
+
+    <main class="hero-painel-funcionario">
         <div class="filtros-lateral">
-            <h1 class="riscos-titulo">RISCOS</h1>
-            <button class="btn-mapa btn-mapa-lateral btn-mapa-todas" onclick="filtrar('Todas')">Todas</button>
-            <div class="separador-filtros"></div>
-            <button class="btn-mapa btn-mapa-lateral btn-mapa-alta" onclick="filtrar('Alta')">Alta</button>
-            <button class="btn-mapa btn-mapa-lateral btn-mapa-media" onclick="filtrar('Média')">Média</button>
-            <button class="btn-mapa btn-mapa-lateral btn-mapa-baixa" onclick="filtrar('Baixa')">Baixa</button>
+            <h2 class="riscos-titulo">Filtrar Prioridade</h2>
+            <button class="btn-mapa-lateral btn-mapa-todas" onclick="filtrarPontos('todas')">Mostrar Todas</button>
+            <button class="btn-mapa-lateral btn-mapa-baixa" onclick="filtrarPontos('baixa')">Prioridade Baixa</button>
+            <button class="btn-mapa-lateral btn-mapa-media" onclick="filtrarPontos('media')">Prioridade Média</button>
+            <button class="btn-mapa-lateral btn-mapa-alta" onclick="filtrarPontos('alta')">Prioridade Alta</button>
+            <button class="btn-mapa-lateral btn-mapa-maxima" onclick="filtrarPontos('maxima')">Prioridade
+                Máxima</button>
         </div>
         <div id="mapa"></div>
     </main>
- 
-    <footer class="rodape rodape-reduzido">
-        <div class="coluna descricao">
-            <h3>Descrição</h3>
-            <p>Plataforma de apoio em desastres. Unindo tecnologia e solidariedade para salvar vidas.</p>
-            <p>Desenvolvido como projeto acadêmico na FIAP</p>
+
+    <footer class="rodape">
+        <div class="coluna">
+            <h3>Sobre o SaveUs</h3>
+            <p>Conectando pessoas e proteção em momentos críticos. Juntos, salvamos mais vidas.</p>
         </div>
-        <div class="coluna links">
+        <div class="coluna">
             <h3>Links Rápidos</h3>
             <ul>
                 <li><a href="./faq.html">Sobre o Projeto</a></li>
@@ -52,19 +45,16 @@
                 <li><a href="#topo">Voltar ao Topo</a></li>
             </ul>
         </div>
-        <div class="coluna contatos">
-            <h3>Contatos</h3>
-            <ul>
-                <li>email: emailexemplo@gmail.com</li>
-                <li>tel: 11 9 6969-6969</li>
-                <li>end: Rua Endereço Teste</li>
-            </ul>
+        <div class="coluna">
+            <h3>Contato</h3>
+            <p>Email: contato@saveus.org</p>
+            <p>Telefone: (11) 99999-9999</p>
+            <p>Endereço: Rua Solidária, 100 - São Paulo/SP</p>
         </div>
- 
         <div class="copyright">
-            © SaveUs FIAP - 2025
+            <p>&copy; SaveUs FIAP - 2025</p>
         </div>
     </footer>
 </body>
- 
+
 </html>

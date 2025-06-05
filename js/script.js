@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ====== ZONA DE RISCO (exemplo fictício no Jardim Paulista) ======
    const zonaDeRisco = L.polygon([
-        [-23.5625, -46.6675], // lado esquerdo superior (próx. Rebouças)
-        [-23.5605, -46.6575], // canto superior direito
-        [-23.5635, -46.6500], // canto direito inferior
-        [-23.5685, -46.6550], // base inferior
-        [-23.5670, -46.6650], // canto esquerdo inferior
+        [-23.5625, -46.6675], 
+        [-23.5605, -46.6575], 
+        [-23.5635, -46.6500], 
+        [-23.5685, -46.6550], 
+        [-23.5670, -46.6650], 
     ], {
         color: "#dc3545",
         fillColor: "#dc3545",

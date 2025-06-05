@@ -19,49 +19,6 @@ export function clearError(input) {
     }
 }
 
-// Nova função para exibir mensagens personalizadas
-function displayMessage(message, type = 'info', redirectUrl = null) {
-    const messageBox = document.createElement('div');
-    messageBox.className = 'message-box';
-    messageBox.innerText = message;
-
-    messageBox.style.position = 'fixed';
-    messageBox.style.top = '20px';
-    messageBox.style.right = '20px';
-    messageBox.style.padding = '15px 25px';
-    messageBox.style.borderRadius = '8px';
-    messageBox.style.zIndex = '1000';
-    messageBox.style.color = 'white';
-    messageBox.style.fontWeight = 'bold';
-    messageBox.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-    messageBox.style.opacity = '0';
-    messageBox.style.transition = 'opacity 0.5s ease-in-out';
-
-    if (type === 'success') {
-        messageBox.style.backgroundColor = '#28a745'; // Verde para sucesso
-    } else if (type === 'error') {
-        messageBox.style.backgroundColor = '#dc3545'; // Vermelho para erro
-    } else {
-        messageBox.style.backgroundColor = '#007bff'; // Azul para informação
-    }
-
-    document.body.appendChild(messageBox);
-
-    setTimeout(() => {
-        messageBox.style.opacity = '1';
-    }, 100);
-
-    setTimeout(() => {
-        messageBox.style.opacity = '0';
-        messageBox.addEventListener('transitionend', () => {
-            messageBox.remove();
-            if (redirectUrl) {
-                window.location.href = redirectUrl;
-            }
-        });
-    }, 3000); // Exibe por 3 segundos
-}
-
 export function validateNome(nomeInput) {
     const nome = nomeInput.value.trim();
     if (nome === '') {
@@ -251,9 +208,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 validateEndereco(ruaInput, numeroInput, bairroInput, cepInput);
 
             if (isValid) {
-                displayMessage('Você foi cadastrado com sucesso!', 'success', 'paginacivil.html');
+                alert('Você foi cadastrado com sucesso!');
+                window.location.href = 'paginacivil.html';
             } else {
-                displayMessage('Corrija os erros antes de continuar.', 'error');
+                alert('Corrija os erros antes de continuar.');
             }
         });
     }
@@ -277,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isSenhaValid = validateSenha(senhaInputLogin);
 
             if (!isEmailValid || !isSenhaValid) {
-                displayMessage('Por favor, corrija os erros no formulário de login.', 'error');
+                alert('Por favor, corrija os erros no formulário de login.');
                 return;
             }
 
@@ -286,16 +244,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (enteredEmail === CORRECT_EMAIL) {
                 if (enteredSenha === CORRECT_PASSWORD) {
-                    displayMessage('Login efetuado com sucesso!', 'success', 'paginafuncionario.html');
+                    alert('Login efetuado com sucesso!');
+                    window.location.href = 'paginafuncionario.html';
                 } else {
                     showError(senhaInputLogin, 'Senha incorreta.');
-                    displayMessage('Senha incorreta.', 'error');
+                    alert('Senha incorreta.');
                     senhaInputLogin.value = '';
                     senhaInputLogin.focus();
                 }
             } else {
                 showError(emailInputLogin, 'E-mail não cadastrado ou incorreto.');
-                displayMessage('E-mail não cadastrado ou incorreto.', 'error');
+                alert('E-mail não cadastrado ou incorreto.');
                 senhaInputLogin.value = '';
                 emailInputLogin.focus();
             }

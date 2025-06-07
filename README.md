@@ -23,11 +23,11 @@ O SaveUs foi desenvolvido como um projeto acadêmico na FIAP.
 
 ## 👥 Integrantes da Equipe
 
-- **Gustavo Tavares da Silva**  
+- **Gustavo Tavares da Silva - RM562827**  
   [GitHub](https://github.com/gustavaress) | [LinkedIn](https://www.linkedin.com/in/gustavo-tavares-da-silva-b6180a220/)
 
-- **Laura Lopes Cruz**  
+- **Laura Lopes Cruz - RM566376**  
   [GitHub](https://github.com/Laura853) | [LinkedIn](https://www.linkedin.com/in/laura-lopes-a5937a353/)
 
-- **Maicon Douglas da Silva Timoteo**  
+- **Maicon Douglas da Silva Timoteo - RM561279**  
   [GitHub](https://github.com/MaiconDouglas-dev) | [LinkedIn](https://www.linkedin.com/in/maicon-douglas-b244571b5/)

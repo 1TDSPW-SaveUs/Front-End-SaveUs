@@ -19,35 +19,15 @@ O SaveUs foi desenvolvido como um projeto acadêmico na FIAP.
 * **HTML5:** Estrutura das páginas web.
 * **CSS3:** Estilização e design responsivo.
 * **JavaScript:** Lógica de front-end, validações de formulário, interatividade do mapa (Leaflet) e funcionalidades dinâmicas.
-* **Leaflet.js:** Biblioteca JavaScript para mapas interativos, utilizada no painel do funcionário para exibir zonas de risco e pontos de prioridade.
+* **Leaflet.js:** Biblioteca JavaScript para mapas interativos, utilizada no painel do funcionário para exibir zonas de risco e pontos de prioridade..
 
-## Como Rodar o Projeto (Localmente)
+## 👥 Integrantes da Equipe
 
-1.  **Clone o Repositório:**
-    ```bash
-    git clone [https://github.com/seu-usuario/Front-End-SaveUs.git](https://github.com/seu-usuario/Front-End-SaveUs.git)
-    ```
-2.  **Navegue até o Diretório do Projeto:**
-    ```bash
-    cd Front-End-SaveUs
-    ```
-3.  **Abra os Arquivos HTML:**
-    Você pode abrir o `index.html` diretamente em seu navegador. Para uma experiência de desenvolvimento mais completa, é recomendável usar uma extensão como o `Live Server` para VS Code, que provê um servidor local. O arquivo `.vscode/settings.json` já está configurado para a porta 5501 para o Live Server.
+- **Gustavo Tavares da Silva**  
+  [GitHub](https://github.com/gustavaress) | [LinkedIn](https://www.linkedin.com/in/gustavo-tavares-da-silva-b6180a220/)
 
-    Para usar o Live Server, instale a extensão no VS Code e, no `index.html`, clique com o botão direito e selecione "Open with Live Server".
+- **Laura Lopes Cruz**  
+  [GitHub](https://github.com/Laura853) | [LinkedIn](https://www.linkedin.com/in/laura-lopes-a5937a353/)
 
-## Integrantes da Equipe
-
-Este projeto foi desenvolvido pelos seguintes membros:
-
-* **Gustavo Tavares da Silva**
-* **Laura Lopes Cruz**
-* **Maicon Douglas da Silva Timoteo**
-
-## Licença
-
-Este projeto é desenvolvido para fins acadêmicos e não possui licença formal para uso comercial ou distribuição.
-
-## Contato
-
-Para mais informações, dúvidas ou sugestões, entre em contato conosco através da [página de contato](assets/contato.html) ou pelo email: contato@saveus.org.
+- **Maicon Douglas da Silva Timoteo**  
+  [GitHub](https://github.com/MaiconDouglas-dev) | [LinkedIn](https://www.linkedin.com/in/maicon-douglas-b244571b5/)

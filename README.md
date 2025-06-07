@@ -5,6 +5,38 @@ A plataforma **SaveUs** é uma iniciativa dedicada a auxiliar em situações de 
 
 O SaveUs foi desenvolvido como um projeto acadêmico na FIAP.
 
+## 📁 Estrutura do Projeto
+```text
+SaveUs/
+├── assets/
+│   ├── img/
+│   │   ├── Logo.png
+│   │   ├── MapasPrincipal.png
+│   │   ├── fundo.png
+│   │   ├── gustavo.jpg
+│   │   ├── laura.jpeg
+│   │   └── maicon.jpg
+│   ├── cadastro.html
+│   ├── contato.html
+│   ├── entrar.html
+│   ├── faq.html
+│   ├── integrantes.html
+│   ├── paginacivil.html
+│   └── paginafuncionario.html
+├── CSS/
+│   ├── faq.css
+│   ├── nofooter.css
+│   └── style.css
+├── js/
+│   ├── chatbot.js
+│   ├── civil.js
+│   ├── faq.js
+│   ├── script.js
+│   └── validadores.js
+├── index.html
+└── README.md
+
+
 ## Funcionalidades Principais
 
 * **Painel do Funcionário:** Permite que funcionários da Defesa Civil visualizem áreas de risco no mapa e filtrem pontos de pessoas em grupos de prioridade (baixa, média, alta, máxima).

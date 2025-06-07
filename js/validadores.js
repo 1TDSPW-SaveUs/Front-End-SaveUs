@@ -1,8 +1,10 @@
+// Função para exibir uma mensagem de erro associada a um campo de input.
 export function showError(input, message) {
     const inputGrupo = input.parentElement;
     inputGrupo.classList.add('error');
     let errorTextElement = inputGrupo.querySelector('.error-text');
     if (!errorTextElement) {
+        // Cria o elemento 'small' para o texto do erro se ele não existir.
         errorTextElement = document.createElement('small');
         errorTextElement.className = 'error-text';
         inputGrupo.appendChild(errorTextElement);
@@ -10,6 +12,7 @@ export function showError(input, message) {
     errorTextElement.innerText = message;
 }
 
+// Função para limpar a mensagem de erro de um campo de input.
 export function clearError(input) {
     const inputGrupo = input.parentElement;
     inputGrupo.classList.remove('error');
@@ -19,6 +22,7 @@ export function clearError(input) {
     }
 }
 
+// Valida se o campo nome completo foi preenchido e contém pelo menos duas palavras.
 export function validateNome(nomeInput) {
     const nome = nomeInput.value.trim();
     if (nome === '') {
@@ -33,6 +37,7 @@ export function validateNome(nomeInput) {
     }
 }
 
+// Valida a data de nascimento: obrigatória, formato válido, não futura e dentro de um limite de idade (100 anos).
 export function validateDataNascimento(dataNascimentoInput) {
     const dateValue = dataNascimentoInput.value;
     if (dateValue === '') {
@@ -40,15 +45,18 @@ export function validateDataNascimento(dataNascimentoInput) {
         return false;
     }
 
+    // Tenta converter o valor do input para um objeto Date.
     const dataNascimento = new Date(dateValue);
     if (isNaN(dataNascimento.getTime())) {
         showError(dataNascimentoInput, 'Formato de data inválido.');
         return false;
     }
 
+    // Pega a data atual e zera as horas para comparar apenas as datas.
     const hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
 
+    // Define uma data mínima (100 anos atrás).
     const dataMinima = new Date();
     dataMinima.setFullYear(hoje.getFullYear() - 100);
     dataMinima.setHours(0, 0, 0, 0);
@@ -65,9 +73,11 @@ export function validateDataNascimento(dataNascimentoInput) {
     }
 }
 
+// Valida o CPF: obrigatório, 11 dígitos e não pode ser uma sequência de números repetidos.
 export function validateCpf(cpfInput) {
     const cpf = cpfInput.value.replace(/\D/g, '');
     if (cpf === '') {
+        // Remove caracteres não numéricos.
         showError(cpfInput, 'O CPF é obrigatório.');
         return false;
     } else if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
@@ -79,6 +89,7 @@ export function validateCpf(cpfInput) {
     }
 }
 
+// Valida o telefone: obrigatório e deve ter 10 ou 11 dígitos.
 export function validateTelefone(telefoneInput) {
     const telefone = telefoneInput.value.replace(/\D/g, '');
     if (telefone === '') {
@@ -93,6 +104,7 @@ export function validateTelefone(telefoneInput) {
     }
 }
 
+// Valida o e-mail: opcional, mas se preenchido, deve ter um formato válido.
 export function validateEmail(emailInput) {
     const email = emailInput.value.trim();
     if (email === '') {
@@ -107,6 +119,7 @@ export function validateEmail(emailInput) {
     return true;
 }
 
+// Valida os campos do endereço: rua, número, bairro e CEP são obrigatórios. CEP deve ter 8 dígitos.
 export function validateEndereco(ruaInput, numeroInput, bairroInput, cepInput) {
     let isValid = true;
 
@@ -137,6 +150,7 @@ export function validateEndereco(ruaInput, numeroInput, bairroInput, cepInput) {
     return isValid;
 }
 
+// Valida o e-mail do funcionário: obrigatório e deve seguir o formato nome.sobrenome@saveus.com.br.
 export function validateEmailFuncionario(emailInput) {
     const email = emailInput.value.trim();
     const regex = /^[a-zA-Z]+\.[a-zA-Z]+@saveus\.com\.br$/;
@@ -153,6 +167,7 @@ export function validateEmailFuncionario(emailInput) {
     }
 }
 
+// Valida a senha: obrigatória e deve ter no mínimo 6 caracteres.
 export function validateSenha(senhaInput) {
     const senha = senhaInput.value.trim();
     if (senha === '') {
@@ -167,9 +182,11 @@ export function validateSenha(senhaInput) {
     }
 }
 
+// Adiciona os event listeners quando o DOM estiver completamente carregado.
 document.addEventListener('DOMContentLoaded', () => {
     const cadastroForm = document.getElementById('cadastro-form');
 
+    // Configuração para o formulário de cadastro de civis.
     if (cadastroForm) {
         const nomeInput = document.getElementById('nome');
         const dataNascimentoInput = document.getElementById('data-nascimento');
@@ -181,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const bairroInput = document.getElementById('bairro');
         const cepInput = document.getElementById('cep');
 
+        // Adiciona validação "on blur" (quando o campo perde o foco).
         nomeInput.addEventListener('blur', () => validateNome(nomeInput));
         dataNascimentoInput.addEventListener('blur', () => validateDataNascimento(dataNascimentoInput));
         cpfInput.addEventListener('blur', () => validateCpf(cpfInput));
@@ -194,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             input.addEventListener('blur', () => validateEndereco(ruaInput, numeroInput, bairroInput, cepInput));
         });
 
+        // Validação ao submeter o formulário de cadastro.
         cadastroForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -216,18 +235,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Configuração para o formulário de login de funcionários.
     const loginForm = document.getElementById('login-form');
 
     if (loginForm) {
         const emailInputLogin = document.getElementById('email');
         const senhaInputLogin = document.getElementById('senha');
 
+        // Credenciais corretas (idealmente, isso viria de um backend seguro).
         const CORRECT_EMAIL = 'nome.sobrenome@saveus.com.br';
         const CORRECT_PASSWORD = 'SaveUs@2025';
 
+        // Adiciona validação "on blur" para os campos de login.
         emailInputLogin.addEventListener('blur', () => validateEmailFuncionario(emailInputLogin));
         senhaInputLogin.addEventListener('blur', () => validateSenha(senhaInputLogin));
 
+        // Validação ao submeter o formulário de login.
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -242,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const enteredEmail = emailInputLogin.value.trim();
             const enteredSenha = senhaInputLogin.value.trim();
 
+            // Verifica se o e-mail e senha correspondem aos valores corretos.
             if (enteredEmail === CORRECT_EMAIL) {
                 if (enteredSenha === CORRECT_PASSWORD) {
                     alert('Login efetuado com sucesso!');

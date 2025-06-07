@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Lógica para a página civil de alertas
+    // Seleciona o painel principal da página civil.
     const painelCivil = document.querySelector('.hero-painel-civil');
+    // Garante que o script só execute se o painel existir na página.
     if (painelCivil) {
         const botoesDesastre = document.querySelectorAll('.btn-desastre');
         const tituloDesastreEl = document.getElementById('titulo-desastre');
         const descricaoDesastreEl = document.getElementById('descricao-desastre');
 
+        // Objeto contendo as informações detalhadas para cada tipo de desastre.
         const infosDesastres = {
-            enchentes: {
+            enchentes: { // Chave corresponde ao 'data-tipo' do botão
                 titulo: "Enchentes e Inundações",
                 descricao: `
                     <p><strong>Antes:</strong></p>
@@ -112,16 +114,18 @@ document.addEventListener('DOMContentLoaded', () => {
             // Adicione mais tipos de desastres e suas informações aqui
         };
 
+        // Adiciona um evento de clique para cada botão de tipo de desastre.
         botoesDesastre.forEach(botao => {
             botao.addEventListener('click', () => {
-                // Remove a classe 'ativo' de todos os botões
+                // Primeiro, remove a classe 'ativo' de todos os botões para destacar apenas o clicado.
                 botoesDesastre.forEach(b => b.classList.remove('ativo'));
-                // Adiciona a classe 'ativo' ao botão clicado
+                // Adiciona a classe 'ativo' ao botão que foi clicado.
                 botao.classList.add('ativo');
 
+                // Obtém o tipo de desastre a partir do atributo 'data-tipo' do botão.
                 const tipoDesastre = botao.dataset.tipo;
+                // Busca as informações correspondentes no objeto 'infosDesastres'.
                 const info = infosDesastres[tipoDesastre];
-
                 if (info) {
                     tituloDesastreEl.textContent = info.titulo;
                     descricaoDesastreEl.innerHTML = info.descricao; // Usar innerHTML para renderizar as tags HTML

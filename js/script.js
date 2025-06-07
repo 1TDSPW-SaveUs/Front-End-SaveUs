@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-   //Rolagem suave
+   // Seleciona o link "Voltar ao Topo" para adicionar a funcionalidade de rolagem suave
     const backToTopLink = document.querySelector('a[href="#topo"]');
-    if (backToTopLink) {
+    if (backToTopLink) { // Verifica se o link existe antes de adicionar o evento
       backToTopLink.addEventListener('click', function (e) {
         e.preventDefault();
         window.scrollTo({
@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Inicializa o mapa no Jardim Paulista
+    // Inicializa o mapa Leaflet, centralizando-o em uma localização específica (Jardim Paulista) e definindo o nível de zoom.
     const mapa = L.map("mapa").setView([-23.561414, -46.655881], 15);
 
-    // Camada do mapa (tile)
+    // Adiciona a camada de "tiles" (azulejos) do mapa, que são as imagens que compõem o mapa visual.
     L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
         attribution: '&copy; OpenStreetMap & Carto',
         subdomains: "abcd",
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).addTo(mapa);
 
 
-    // ====== ZONA DE RISCO (exemplo fictício no Jardim Paulista) ======
+    // Define uma área poligonal no mapa para representar uma zona de risco.
    const zonaDeRisco = L.polygon([
         [-23.5625, -46.6675], 
         [-23.5605, -46.6575], 
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fillOpacity: 0.4,
     }).addTo(mapa).bindPopup("Zona de Risco: Jardim Paulista");
 
-    // ====== PONTOS DE PESSOAS EM GRUPO DE RISCO ======
+    // Array de objetos, cada um representando uma pessoa em grupo de risco com nome, prioridade e coordenadas.
     const pontos = [
       {
         nome: "Maria (Idosa)",
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     ];
 
-    // ====== CORES POR PRIORIDADE ======
+    // Mapeamento de níveis de prioridade para cores específicas, para visualização no mapa.
     const coresPrioridade = {
       baixa: "#28a745",
       media: "#ffc107",
@@ -73,12 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
       maxima: "#dc3545",
     };
 
-    // Array para armazenar os marcadores
+    // Array para guardar as referências dos marcadores criados no mapa.
     let marcadores = [];
 
-    // Função para adicionar todos os marcadores no mapa
+    // Função responsável por criar e adicionar os marcadores de cada ponto de risco no mapa.
     function carregarPontos() {
       pontos.forEach((ponto) => {
+        // Define a cor do marcador com base na prioridade do ponto.
         const cor = coresPrioridade[ponto.prioridade];
         const marcador = L.circleMarker(ponto.coords, {
           radius: 10,
@@ -91,15 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
           .addTo(mapa)
           .bindPopup(`<strong>${ponto.nome}</strong><br>Prioridade: ${ponto.prioridade.toUpperCase()}`);
 
+        // Adiciona a propriedade 'prioridade' diretamente ao objeto marcador para facilitar a filtragem.
         marcador.prioridade = ponto.prioridade;
         marcadores.push(marcador);
       });
     }
 
-    // Chamada inicial
+    // Carrega os pontos no mapa assim que o script é executado.
     carregarPontos();
 
-    // Função para filtrar os pontos com base na prioridade
+    // Função para filtrar os marcadores exibidos no mapa com base no nível de prioridade selecionado.
+    // Tornada global para ser acessível pelos botões no HTML.
     window.filtrarPontos = function(nivel) { // Tornando a função global para ser acessível pelos botões HTML
       marcadores.forEach((marcador) => {
         if (nivel === "todas" || marcador.prioridade === nivel) {

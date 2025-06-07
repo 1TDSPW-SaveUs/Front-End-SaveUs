@@ -35,6 +35,7 @@ SaveUs/
 │   └── validadores.js
 ├── index.html
 └── README.md
+```
 
 
 ## Funcionalidades Principais
